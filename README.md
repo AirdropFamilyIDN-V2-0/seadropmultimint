@@ -1,4 +1,6 @@
 # SeaDrop MultiMint
+- [V1 Auto Mint & Manual Withdraw](https://tools.airdropfamilyidn.com/multimintsea)
+- [V2 Auto Mint & Withdraw](https://tools.airdropfamilyidn.com/multimintseav2)
 # Requirements :
 - For Windows 10 Or Higher Install Python 3.10 [Download Here](https://www.python.org/downloads/release/python-3100/) [Scrool Down] [Or Try Install From Microsoft Store]
 ```
