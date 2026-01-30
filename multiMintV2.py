@@ -17,8 +17,22 @@ print(f"Web3.py version OK: {web3_version}")
 
 # Constants
 SEA_DROP_ADDR = "0x00005EA00Ac477B1030CE78506496e8C2dE24bf5"
-MULTIMINT_ADDR = "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F"
-SUPPORTED_CHAIN_IDS = {1, 10, 42161, 8453, 143, 137, 2741, 43114, 80094, 999}
+# MULTIMINT_ADDR = "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F"
+MULTIMINT_ADDRS = {
+    1: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    10: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    42161: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    8453: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    143: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    137: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    2741: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    43114: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    80094: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    999: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
+    57073: "0xbAf05914E32153f58603d2dE176d51E88186aAdb",
+}
+
+SUPPORTED_CHAIN_IDS = {1, 10, 42161, 8453, 143, 137, 2741, 43114, 80094, 999, 57073}
 
 # Minimal ABIs (only what's needed)
 SEA_ABI = json.loads('[{"inputs":[{"internalType":"address","name":"nftContract","type":"address"}],"name":"getPublicDrop","outputs":[{"components":[{"internalType":"uint80","name":"mintPrice","type":"uint80"},{"internalType":"uint48","name":"startTime","type":"uint48"},{"internalType":"uint48","name":"endTime","type":"uint48"},{"internalType":"uint16","name":"maxTotalMintableByWallet","type":"uint16"},{"internalType":"uint16","name":"feeBps","type":"uint16"},{"internalType":"bool","name":"restrictFeeRecipients","type":"bool"}],"internalType":"struct PublicDrop","name":"","type":"tuple"}],"stateMutability":"view","type":"function"}]')
@@ -28,7 +42,7 @@ MULTI_ABI = json.loads('[{"inputs":[{"internalType":"uint256","name":"total","ty
 SYMBOLS = {
     1: "ETH", 10: "ETH", 42161: "ETH", 8453: "ETH",
     137: "POL", 43114: "AVAX", 143: "MON", 2741: "ETH",
-    80094: "BERA", 999: "HYPE"
+    80094: "BERA", 999: "HYPE", 57073: "ETH"
 }
 
 # Helpers
@@ -95,7 +109,12 @@ def main():
 
         # Contracts
         sea_drop = to_checksum(SEA_DROP_ADDR)
-        multimint = to_checksum(MULTIMINT_ADDR)
+        # multimint = to_checksum(MULTIMINT_ADDR)
+        if chain_id not in MULTIMINT_ADDRS:
+            print("No MultiMint address for this chain.")
+            return
+
+        multimint = to_checksum(MULTIMINT_ADDRS[chain_id])
         sea_contract = w3.eth.contract(address=sea_drop, abi=SEA_ABI)
         multi_contract = w3.eth.contract(address=multimint, abi=MULTI_ABI)
 
