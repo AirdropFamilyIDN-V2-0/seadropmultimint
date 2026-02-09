@@ -30,9 +30,10 @@ MULTIMINT_ADDRS = {
     80094: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
     999: "0x0000419B4B6132e05DfBd89F65B165DFD6fA126F",
     57073: "0xbAf05914E32153f58603d2dE176d51E88186aAdb",
+    4326: "0x896Bf8Dd627284d2fE6e404d208aE2464E82b61f",
 }
 
-SUPPORTED_CHAIN_IDS = {1, 10, 42161, 8453, 143, 137, 2741, 43114, 80094, 999, 57073}
+SUPPORTED_CHAIN_IDS = {1, 10, 42161, 8453, 143, 137, 2741, 43114, 80094, 999, 57073, 4326}
 
 # Minimal ABIs (only what's needed)
 SEA_ABI = json.loads('[{"inputs":[{"internalType":"address","name":"nftContract","type":"address"}],"name":"getPublicDrop","outputs":[{"components":[{"internalType":"uint80","name":"mintPrice","type":"uint80"},{"internalType":"uint48","name":"startTime","type":"uint48"},{"internalType":"uint48","name":"endTime","type":"uint48"},{"internalType":"uint16","name":"maxTotalMintableByWallet","type":"uint16"},{"internalType":"uint16","name":"feeBps","type":"uint16"},{"internalType":"bool","name":"restrictFeeRecipients","type":"bool"}],"internalType":"struct PublicDrop","name":"","type":"tuple"}],"stateMutability":"view","type":"function"}]')
@@ -42,7 +43,7 @@ MULTI_ABI = json.loads('[{"inputs":[{"internalType":"uint256","name":"total","ty
 SYMBOLS = {
     1: "ETH", 10: "ETH", 42161: "ETH", 8453: "ETH",
     137: "POL", 43114: "AVAX", 143: "MON", 2741: "ETH",
-    80094: "BERA", 999: "HYPE", 57073: "ETH"
+    80094: "BERA", 999: "HYPE", 57073: "ETH", 4326: "ETH"
 }
 
 # Helpers
@@ -196,4 +197,5 @@ def main():
         print("Fatal Error : ", e)
 
 if __name__ == "__main__":
+
     main()
